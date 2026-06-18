@@ -1,0 +1,44 @@
+jml_mahasiswa = int(input("Masukkan jumlah mahasiswa: "))
+
+total_ipk_kelas = 0
+
+for i in range(jml_mahasiswa):
+    print("\nMahasiswa ke-", i + 1)
+
+    nama = input("Nama mahasiswa: ")
+    jml_mk = int(input("Jumlah mata kuliah: "))
+
+    total_sks = 0
+    total_bobot = 0
+
+    for j in range(jml_mk):
+        print("\nMata kuliah", j + 1)
+
+        mk = input("Nama mata kuliah: ")
+        sks = int(input("SKS: "))
+        nilai = input("Nilai (A/B/C/D/E): ").strip().upper()
+
+        if nilai == "A":
+            bobot = 4
+        elif nilai == "B":
+            bobot = 3
+        elif nilai == "C":
+            bobot = 2
+        elif nilai == "D":
+            bobot = 1
+        else:
+            bobot = 0
+
+        total_sks = total_sks + sks
+        total_bobot = total_bobot + (bobot * sks)
+
+    ipk = total_bobot / total_sks
+
+    print("Nama :", nama)
+    print("IPK :", round(ipk, 2))
+
+    total_ipk_kelas = total_ipk_kelas + ipk
+
+rata_rata = total_ipk_kelas / jml_mahasiswa
+
+print("\nRata-rata IPK kelas =", round(rata_rata, 2))
